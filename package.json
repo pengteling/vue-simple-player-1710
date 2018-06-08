@@ -1,11 +1,11 @@
 {
-  "name": "0603vue-webpack",
+  "name": "vue-simple-player-1710",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pengteling/vue-simple-player-1710"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
