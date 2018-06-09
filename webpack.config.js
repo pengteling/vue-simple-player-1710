@@ -102,8 +102,9 @@ if (isDev) {
   )
 } else {
   config.entry = {
-    app: path.resolve(__dirname,'src/index.js'),
-    vendor: ['vue']
+    // app: path.resolve(__dirname,'src/index.js'),
+    // vendor: ['vue']
+    simplePlayer: path.resolve(__dirname,'src/index.js')
   }
   config.plugins.push(
     new ExtractTextWebpackPlugin('stye-[contentHash:8].css'),

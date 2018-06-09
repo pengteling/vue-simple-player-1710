@@ -2,7 +2,7 @@
   "name": "vue-simple-player5",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app-b20a7c39.js",
+  "main": "dist/simplePlayer.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pengteling/vue-simple-player-1710"
