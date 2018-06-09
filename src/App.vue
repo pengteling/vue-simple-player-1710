@@ -53,6 +53,25 @@ export default {
     Tabs,
     Item
   },
+  updated(){
+    // localStorage.setItem("todos", JSON.stringify(this.todos))
+    // localStorage.setItem("filter", JSON.stringify(this.filter))
+    let firebaseRef = firebase.database().ref()
+        firebaseRef.child("todos").set(this.todos)
+        firebaseRef.child("filter").set(this.filter)
+    
+  },
+  beforeMount(){
+    // if(localStorage.getItem("filter")){
+    //   this.todos = JSON.parse(localStorage.getItem("todos"))
+    //   this.filter = localStorage.getItem("filter")
+    // }
+    
+
+        let firebaseRef = firebase.database().ref()
+        firebaseRef.child("todos").once('value').then(snapshot => this.todos=snapshot.val())
+        firebaseRef.child("filter").once('value').then(snapshot => this.filter=snapshot.val())
+  },
   computed: {
     leftItemsCount() {
       //return this.todos.filter(v=>v.isCompleted === false).length
