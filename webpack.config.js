@@ -104,18 +104,19 @@ if (isDev) {
   config.entry = {
     // app: path.resolve(__dirname,'src/index.js'),
     // vendor: ['vue']
-    simplePlayer: path.resolve(__dirname,'src/index.js')
+    simplePlayer: path.resolve(__dirname,'src/components/Mplayer.vue')
   }
   config.plugins.push(
     new ExtractTextWebpackPlugin('stye-[contentHash:8].css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name:'vendor'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name:'runtime'
-    })
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name:'vendor'
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name:'runtime'
+    // })
   )
-  config.output.filename = '[name]-[chunkhash:8].js'
+  config.output.filename = '[name].js'
+  config.output.libraryTarget = 'umd'
   config.module.rules.push(
     {
       test: /\.scss$/,

@@ -2,7 +2,8 @@
   <audio 
     :src="url"
     ref="audio"
-    
+    @loadedmetadata="loadedmetadata"
+    @timeupdate="timeupdate"    
   />
   
 </template>
@@ -10,7 +11,8 @@
 export default {
   data(){
     return{
-
+      duration: 0,
+      currentTime: 0
     }
   },
   props:{
@@ -24,6 +26,12 @@ export default {
     },
     volume:{      
       default:80
+    },
+    // curTime:{
+    //   type:Number
+    // }
+    changeTime:{
+      type:Number
     }
   },
   watch:{
@@ -32,6 +40,14 @@ export default {
     },
     'volume'(val){
       this.changeVolume(val)
+    },
+    'curTime'(val,oldVal){
+      if(Math.abs(val-oldVal)>1){
+        this.changeCurrentTime(val)
+      }
+    },
+    'changeTime'(val){
+      this.changeCurrentTime(val)
     }
   },
   computed:{
@@ -49,7 +65,20 @@ export default {
     },
     changeVolume(volume){
       this.audio.volume = (volume / 100)*(volume / 100)
+    },
+    loadedmetadata(){
+      this.duration = this.audio.duration
+      this.$emit('getDuration',this.duration)
+    },
+    timeupdate(){
+      this.currentTime = this.audio.currentTime
+      this.$emit('getCurrentTime', this.currentTime)
+    },
+    changeCurrentTime(time){
+      this.currentTime = time
+      this.audio.currentTime = time
     }
+    
   }
 }
 </script>
