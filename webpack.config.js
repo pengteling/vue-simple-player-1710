@@ -66,7 +66,7 @@ if (isDev) {
     /* webpack两种刷新模式iframe和inline */
     inline:true,
     historyApiFallback: true,
-    open:true
+    //open:true
   }
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin()
