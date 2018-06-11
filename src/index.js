@@ -8,6 +8,9 @@ new Vue({
   components:{
     App
   },
-  render: h=>h(App)
+  // render: h=>h(App)
+  render(h){
+    return h(App)
+  }
   //template:'<App />'
 })//.$mount(document.getElementById('app'))
