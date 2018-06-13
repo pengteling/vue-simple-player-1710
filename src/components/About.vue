@@ -8,3 +8,21 @@
     <router-view></router-view>
   </div>
 </template>
+<script>
+import { EventBus } from '@/EventBus'
+export default {
+  data(){
+    return{
+
+      msg:''
+    }
+  },
+  mounted(){
+    EventBus.$on('sendmsg', (txt)=>{
+      console.log(txt)
+      this.msg = txt
+    })
+  }
+}
+</script>
+

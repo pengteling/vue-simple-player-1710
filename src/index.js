@@ -4,6 +4,19 @@ import Vue from 'vue'
 import App from '@/App'
 import router from '@/router/index'
 
+router.beforeEach((to,from,next)=>{
+  console.log("beforeEach")
+  next()
+})
+router.beforeResolve((to,from,next)=>{
+  console.log("beforeResolve")
+  next()
+})
+router.afterEach((to,from)=>{
+  console.log("afterEach")
+  //alert("afterEach")
+})
+
 new Vue({
   el: '#app',
   router,

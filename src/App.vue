@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo">
     <h2>路由</h2>
     <nav>
       <!-- <a href="#/">Home</a>
@@ -10,7 +10,11 @@
       <router-link to="/user/512?kk=123">User</router-link>
       <router-link :to="{name:'User',params:{userid: 512} ,query:{kkk:123} }">User</router-link>
     </nav>
-    <router-view></router-view>
+    <transition name="slider">
+      <!-- <keep-alive> -->
+        <router-view></router-view>
+      <!-- </keep-alive> -->
+    </transition>
     <router-view name="cHeader"></router-view>
   </div>
 </template>
@@ -27,4 +31,20 @@ export default {
   // }
 }
 </script>
+<style>
+.slider-enter-active, .slider-leave-active{
+  transition:all 0.5s;
+}
+.slider-enter{
+  opacity: 0;
+  transform: translate3d(-300px,0,0)
+}
+.slider-leave-to{
+  opacity: 0;
+  transform: translate3d(300px,0,0)
+}
+.demo > div{
+  position: absolute;
+}
+</style>
 
