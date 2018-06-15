@@ -33,6 +33,10 @@ const config = {
         loader: 'babel-loader'
       },
       {
+        test: /\.jsx$/,
+        loader: 'babel-loader'
+      },
+      {
         test: /\.(bmp|jpg|png|jpeg|gif|svg)$/,
         use:[
           {

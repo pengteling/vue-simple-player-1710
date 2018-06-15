@@ -5,6 +5,8 @@ import About from '@/components/About'
 const User = () => import('@/components/User') //懒加载
 import Category from '@/components/Category'
 import Category2 from '@/components/Category2'
+import FunctionalComponent from '@/components/functionalComponent'
+
 import Router from 'vue-router'
 Vue.use(Router)
 const routes = [
@@ -71,6 +73,10 @@ const routes = [
     component:{ render(h){ return h('div','alias')} },
     alias: ['/b','/c','/d/c']
   },
+  {
+    path: '/functional',
+    component:FunctionalComponent
+  }
  
 ]
 export default new Router({

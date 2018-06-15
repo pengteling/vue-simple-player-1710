@@ -1,7 +1,7 @@
 // import Vue from 'vue'
 // alert("#3") 3432433434
 import Vue from 'vue'
-import App from '@/App'
+import App from '@/App2'
 import router from '@/router/index'
 
 router.beforeEach((to,from,next)=>{
