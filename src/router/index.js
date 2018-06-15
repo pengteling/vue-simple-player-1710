@@ -78,6 +78,8 @@ export default new Router({
   scrollBehavior (to, from, savedPosition) {
     // return 期望滚动到哪个的位置
     if (savedPosition) {
+      console.log(savedPosition)
+      sessionStorage.setItem(to.path,savedPosition.y)
       return savedPosition
     } else {
       return { x: 0, y: 0 }

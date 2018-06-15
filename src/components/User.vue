@@ -15,6 +15,14 @@ export default {
     // ...
     console.log("beforeRouteEnter")
     next()
+    // setTimeout(()=>{
+    //   if(true){
+    //     next()
+    //   }else{
+    //     // eventBus.$emit('send',)
+    //   }
+    // },3000)
+    
   },
   beforeRouteLeave(to,from,next){
     console.log("beforeRouteLeave")
@@ -26,6 +34,17 @@ export default {
   },
   updated(){
     
+  },
+  created(){
+    // setTimeout(()=>{
+
+    // },3000)
+  },
+  mounted(){
+    // sessionStorage.getItem(this.$route.path)
+    setTimeout(()=>window.scrollTo(0,sessionStorage.getItem(this.$route.path)*1),3000)
+    
   }
+  
 }
 </script>

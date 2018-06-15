@@ -15,7 +15,7 @@ const config = {
     extensions:['*','.vue','.js','.jsx'],
     alias:{
       '@':path.resolve(__dirname,'src'),
-      // 'vue$': 'vue/dist/vue.common.js'      
+      'vue$': 'vue/dist/vue.common.js'      
     }
   },
   module: {
