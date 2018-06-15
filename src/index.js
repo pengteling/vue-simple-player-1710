@@ -1,25 +1,11 @@
 // import Vue from 'vue'
 // alert("#3") 3432433434
 import Vue from 'vue'
-import App from '@/App2'
-import router from '@/router/index'
+import App from '@/App2.jsx'
 
-router.beforeEach((to,from,next)=>{
-  console.log("beforeEach")
-  next()
-})
-router.beforeResolve((to,from,next)=>{
-  console.log("beforeResolve")
-  next()
-})
-router.afterEach((to,from)=>{
-  console.log("afterEach")
-  //alert("afterEach")
-})
 
 new Vue({
-  el: '#app',
-  router,
+  el: '#app',  
   components: {
     App
   },

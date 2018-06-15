@@ -4,6 +4,7 @@
     @doEvent="doEvent"
   >
     这是FunctionalComponent
+    
   </FunctionalComponent>
 </template>
 <script>

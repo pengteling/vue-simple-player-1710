@@ -2,6 +2,8 @@
   "presets":["env"],
   "plugins": [
     "syntax-dynamic-import",
-    "transform-vue-jsx"
+    "transform-vue-jsx",
+    "jsx-v-model",
+    "jsx-vue-functional"
   ]
 }
