@@ -1,13 +1,13 @@
 
 
 <script>
-// export default{
-//   functional:true, 
-//   render(h, context){
-//     console.log(context.props)
-//     console.log(context.listeners)
-//   }
-// }
+export default{
+  functional:true, 
+  render(h, { props, slots,listeners}){
+    console.log(props)
+    console.log(listeners)
+  }
+}
 </script>
 <template functional>
   <div>
