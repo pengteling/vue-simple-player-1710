@@ -1,7 +1,8 @@
 // import Vue from 'vue'
 // alert("#3") 3432433434
 import Vue from 'vue'
-import App from '@/App5.jsx'
+// import App from '@/App4.jsx'
+import App from '@/App.vue'
 
 
 new Vue({

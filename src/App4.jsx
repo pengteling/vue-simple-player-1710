@@ -6,9 +6,9 @@
 //        slots().default
       
 //        )
-//     return (
-//       <div>test</div>
-//     )
+//     // return (
+//     //   <div>test</div>
+//     // )
    
 //   }
 // }
@@ -17,7 +17,7 @@ const Child = ({slots}) => {
   return slots().default
   return (
     <div>
-      {slots().default}
+     
     </div>
   )
 }
@@ -25,9 +25,11 @@ const Child = ({slots}) => {
 export default {
   render(){
     return (
-      <Child>
-        <div>test</div>
-      </Child>
+      <section>
+        <Child>
+          <div>test</div>
+        </Child>
+      </section>
     )
   }
 }
