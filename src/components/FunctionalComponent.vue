@@ -1,18 +1,72 @@
-
-
-<script>
-// export default{
-//   functional:true, 
-//   render(h, context){
-//     console.log(context.props)
-//     console.log(context.listeners)
-//   }
-// }
-</script>
-<template functional>
-  <div>
-    {{ props.prop1 }}
-    {{ listeners.doEvent() }}
-    {{ slots().default }}
-  </div>
+<template>
+<div id="app5">
+    <input v-model="query">
+    <my-transition :query="query" :list="list">
+        <li v-for="(item, index) in computedList"
+            :key="item.msg"
+            :data-index="index">
+            {{item.msg}}
+        </li>
+    </my-transition>
+</div>
 </template>
+<script>
+import Vue from "vue";
+Vue.component("my-transition", {
+  functional: true,
+  render: function(h, ctx) {
+    var data = {
+      props: {
+        tag: "ul",
+        css: false
+      },
+      on: {
+        beforeEnter: function(el) {
+          el.style.opacity = 0;
+          el.style.height = 0;
+        },
+        enter: function(el, done) {
+          var delay = el.dataset.index * 150;
+          
+          setTimeout(function() {
+            Velocity(el, { opacity: 1, height: "1.6em" }, { complete: done });
+          }, delay);
+        },
+        leave: function(el, done) {
+          var delay = el.dataset.index * 150;
+
+          setTimeout(function() {
+            Velocity(el, { opacity: 0, height: 0 }, { complete: done });
+          }, delay);
+        }
+      }
+    };
+    return h("transition-group", data, ctx.children);
+  },
+  props: ["query", "list"]
+});
+export default {
+  data() {
+    return {
+      query: "",
+      list: [
+        { msg: "Bruce Lee" },
+        { msg: "Jackie Chan" },
+        { msg: "Chuck Norris" },
+        { msg: "Jet Li" },
+        { msg: "Kung Furry" },
+        { msg: "Chain Zhang" },
+        { msg: "Iris Zhao" }
+      ]
+    };
+  },
+  computed: {
+    computedList: function() {
+      var vm = this;
+      return this.list.filter(function(item) {
+        return item.msg.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1;
+      });
+    }
+  }
+};
+</script>
