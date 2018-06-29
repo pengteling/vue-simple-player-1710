@@ -6,13 +6,13 @@
     <div class="main">
       <section class="real-app">
         <input type="text" class="add-input" placeholder="接下来要做什么?" @keyup.enter="addTodo" ref="ipt">
-        <item
+        <!-- <item
           v-for="todo in todosView"
           :todo="todo"
           :key="todo.content"          
         >
-        </item>      
-        <tabs />        
+        </item>       -->
+        <!-- <tabs />         -->
       </section>
     </div>
     <footer id="footer">
@@ -21,6 +21,9 @@
   </div>
 </template>
 <script>
+// import {createNamespacedHelpers} from 'vuex'
+// const { mapState, mapActions,mapMutations } = createNamespacedHelpers('tabs')
+
 import {mapState, mapGetters, mapMutations} from 'vuex'
 import Tabs from '@/components/Tabs'
 import Item from '@/components/Item'
@@ -50,7 +53,15 @@ export default {
 
     },
   computed: {
-    ...mapGetters(['todosView'])
+    // ...mapGetters(['todosView']),
+    //  ...mapState(['filter']) //表示 模块tabs下的state 
+      ...mapState({
+        filter: state=> state.tabs.filter
+      })
+      // ...mapState('tabs',{
+      //   filter: state=> state.filter
+      // })
+
     /* leftItemsCount() {
       //return this.todos.filter(v=>v.isCompleted === false).length
       return this.todos.reduce((t, v) => {
@@ -75,6 +86,8 @@ export default {
     } */
   },
   methods: {
+    ...mapMutations('tabs',['changeFilter']),
+    // ...mapMutations(['changeFilter']),
     ...mapMutations({
       /* 组件addTodoStore对应store里面的addTodo */
       addTodoStore: 'addTodo'
@@ -119,6 +132,16 @@ export default {
     toggleFilter(state) {
       this.filter = state;
     } */
+  },
+  mounted(){
+    console.log(this.$store.state.tabs.filter)
+    console.log(this.$store.state.todos.todos)
+    setTimeout(()=>this.changeFilter()
+  ,3000)
+  },
+    
+  update(){
+    console.log(this.$store.state.todos.todos)
   }
 };
 </script>
