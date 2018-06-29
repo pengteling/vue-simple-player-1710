@@ -9,19 +9,10 @@
         <item
           v-for="todo in todosView"
           :todo="todo"
-          :key="todo.content"
-          @deleteTodo = "deleteTodo"
-          @change-completed = "changeCompleted"
+          :key="todo.content"          
         >
         </item>      
-        <tabs
-          :left-items-count = "leftItemsCount"
-          :is-have-completed = "isHaveCompleted"
-          :filter="filter"
-          @clear-completed = "clearCompleted"
-          @toggle-filter ="toggleFilter"
-        >
-        </tabs>
+        <tabs />        
       </section>
     </div>
     <footer id="footer">
@@ -30,23 +21,14 @@
   </div>
 </template>
 <script>
+import {mapState, mapGetters, mapMutations} from 'vuex'
 import Tabs from '@/components/Tabs'
 import Item from '@/components/Item'
 export default {
   // el: '#app',
   data() {
     return {
-      todos: [
-        /* {
-              content:'eating',
-              isCompleted: true,              
-            },
-            {
-              content:'eating2',
-              isCompleted: false
-            } */
-      ],
-      filter: "All"
+      
     };
   },
   components:{
@@ -55,10 +37,8 @@ export default {
   },
   updated(){
     // localStorage.setItem("todos", JSON.stringify(this.todos))
-    // localStorage.setItem("filter", JSON.stringify(this.filter))
-    let firebaseRef = firebase.database().ref()
-        firebaseRef.child("todos").set(this.todos)
-        firebaseRef.child("filter").set(this.filter)
+    // localStorage.setItem("filter", this.filter)
+    
     
   },
   beforeMount(){
@@ -68,12 +48,10 @@ export default {
     // }
     
 
-        let firebaseRef = firebase.database().ref()
-        firebaseRef.child("todos").once('value').then(snapshot => this.todos=snapshot.val())
-        firebaseRef.child("filter").once('value').then(snapshot => this.filter=snapshot.val())
-  },
+    },
   computed: {
-    leftItemsCount() {
+    ...mapGetters(['todosView'])
+    /* leftItemsCount() {
       //return this.todos.filter(v=>v.isCompleted === false).length
       return this.todos.reduce((t, v) => {
         if (v.isCompleted === false) {
@@ -94,10 +72,21 @@ export default {
       } else {
         return this.todos.filter(v => v.isCompleted === true);
       }
-    }
+    } */
   },
   methods: {
-    addTodo() {
+    ...mapMutations({
+      /* 组件addTodoStore对应store里面的addTodo */
+      addTodoStore: 'addTodo'
+    }),
+    addTodo(){
+      this.addTodoStore({
+        content: this.$refs.ipt.value,
+        isCompleted: false
+      })
+      this.$refs.ipt.value = ""
+    }
+    /* addTodo() {
       //console.log(e.target.value)
       this.todos.unshift({
         content: this.$refs.ipt.value,
@@ -129,7 +118,7 @@ export default {
     },
     toggleFilter(state) {
       this.filter = state;
-    }
+    } */
   }
 };
 </script>

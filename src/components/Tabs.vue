@@ -18,15 +18,21 @@
     </div>
 </template>
 <script>
+import {mapState, mapGetters, mapMutations} from 'vuex'
 export default {
-  props: ["leftItemsCount", "isHaveCompleted", "filter"],
+  // props: ["leftItemsCount", "isHaveCompleted", "filter"],
+  computed:{
+    ...mapState(['filter']),
+    ...mapGetters(['leftItemsCount','isHaveCompleted'])
+  },
   methods: {
-    clearCompleted() {
-      this.$emit("clear-completed");
-    },
-    toggleFilter(state) {
-      this.$emit("toggle-filter", state);
-    }
+    ...mapMutations(['toggleFilter','clearCompleted'])
+    // clearCompleted() {
+    //   this.$emit("clear-completed");
+    // },
+    // toggleFilter(state) {
+    //   this.$emit("toggle-filter", state);
+    // }
   },
   data() {
     return {

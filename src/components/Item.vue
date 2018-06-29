@@ -4,15 +4,16 @@
         type="checkbox" 
         class="toggle"
         :checked="todo.isCompleted"
-        @change="handlerCheck"       
+        @change="updateTodo(todo)"       
                     
       > 
       <!-- v-model="todo.isCompleted"    -->
       <label>{{ todo.content }}</label>
-      <button @click="deleteTodo" class="destory">X</button>
+      <button @click="deleteTodo(todo)" class="destory">X</button>
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   props: {
     todo: {
@@ -21,13 +22,14 @@ export default {
     }
   },
   methods: {
-    deleteTodo() {
-      this.$emit("deleteTodo", this.todo);
-    },
-    handlerCheck() {
-      console.log("handlerCheck");
-      this.$emit("change-completed", this.todo);
-    }
+    // deleteTodo() {
+    //   this.$emit("deleteTodo", this.todo);
+    // },
+    ...mapMutations(['updateTodo','deleteTodo'])
+    // handlerCheck() {
+    //   console.log("handlerCheck");
+    //   this.$emit("change-completed", this.todo);
+    // }
   }
 };
 </script>
