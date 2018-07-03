@@ -1,11 +1,11 @@
 export default {
-  namespaced:true,
-  state:{
-    filter:'All'
+  namespaced: true,
+  state: {
+    filter: 'All'
   },
-  mutations:{
-    changeFilter(state){
-      state.filter = 'Active'
-    }
+  mutations: {    
+    toggleFilter(state, filter) {
+      state.filter = filter
+    },
   }
 }

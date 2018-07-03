@@ -22,11 +22,12 @@ import {mapState, mapGetters, mapMutations} from 'vuex'
 export default {
   // props: ["leftItemsCount", "isHaveCompleted", "filter"],
   computed:{
-    ...mapState(['filter']),
-    ...mapGetters(['leftItemsCount','isHaveCompleted'])
+    ...mapState('tabs',['filter']),
+    ...mapGetters('todos',['leftItemsCount','isHaveCompleted'])
   },
   methods: {
-    ...mapMutations(['toggleFilter','clearCompleted'])
+    ...mapMutations('todos',['clearCompleted']),
+    ...mapMutations('tabs',['toggleFilter'])
     // clearCompleted() {
     //   this.$emit("clear-completed");
     // },

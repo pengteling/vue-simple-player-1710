@@ -6,13 +6,13 @@
     <div class="main">
       <section class="real-app">
         <input type="text" class="add-input" placeholder="接下来要做什么?" @keyup.enter="addTodo" ref="ipt">
-        <!-- <item
+        <item
           v-for="todo in todosView"
           :todo="todo"
           :key="todo.content"          
         >
-        </item>       -->
-        <!-- <tabs />         -->
+        </item>      
+        <tabs />        
       </section>
     </div>
     <footer id="footer">
@@ -53,11 +53,15 @@ export default {
 
     },
   computed: {
-    // ...mapGetters(['todosView']),
-    //  ...mapState(['filter']) //表示 模块tabs下的state 
-      ...mapState({
-        filter: state=> state.tabs.filter
-      })
+     ...mapGetters('todos',['todosView']),
+     ...mapState('tabs',['filter']) //表示 模块tabs下的state 
+     
+      // ...mapState({
+      //   filter: state=> state.tabs.filter,
+      //   filter2(state){
+      //     return state.tabs.filter
+      //   }
+      // })
       // ...mapState('tabs',{
       //   filter: state=> state.filter
       // })
@@ -88,7 +92,7 @@ export default {
   methods: {
     ...mapMutations('tabs',['changeFilter']),
     // ...mapMutations(['changeFilter']),
-    ...mapMutations({
+    ...mapMutations('todos',{
       /* 组件addTodoStore对应store里面的addTodo */
       addTodoStore: 'addTodo'
     }),
@@ -134,14 +138,14 @@ export default {
     } */
   },
   mounted(){
-    console.log(this.$store.state.tabs.filter)
-    console.log(this.$store.state.todos.todos)
-    setTimeout(()=>this.changeFilter()
-  ,3000)
+  //   console.log(this.$store.state.tabs.filter)
+  //   console.log(this.$store.state.todos.todos)
+  //   setTimeout(()=>this.changeFilter()
+  // ,3000)
   },
     
   update(){
-    console.log(this.$store.state.todos.todos)
+    // console.log(this.$store.state.todos.todos)
   }
 };
 </script>

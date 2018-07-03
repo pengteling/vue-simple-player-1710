@@ -25,7 +25,7 @@ export default {
     // deleteTodo() {
     //   this.$emit("deleteTodo", this.todo);
     // },
-    ...mapMutations(['updateTodo','deleteTodo'])
+    ...mapMutations('todos',['updateTodo','deleteTodo'])
     // handlerCheck() {
     //   console.log("handlerCheck");
     //   this.$emit("change-completed", this.todo);
