@@ -18,10 +18,16 @@
     </div>
 </template>
 <script>
-import {mapState, mapGetters, mapMutations} from 'vuex'
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   // props: ["leftItemsCount", "isHaveCompleted", "filter"],
   computed:{
+    /* ...mapState({
+      filter: state=>state.tabs.filter,
+      filter(state){
+        return state.tabs.filter,
+      }
+    }), */
     ...mapState('tabs',['filter']),
     ...mapGetters('todos',['leftItemsCount','isHaveCompleted'])
   },
