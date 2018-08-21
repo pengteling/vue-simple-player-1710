@@ -25,8 +25,8 @@
 // const { mapState, mapActions,mapMutations } = createNamespacedHelpers('tabs')
 
 import {mapState, mapGetters, mapMutations} from 'vuex'
-import Tabs from '@/components/Tabs'
-import Item from '@/components/Item'
+import Tabs from '@/views/todo/Tabs'
+import Item from '@/views/todo/Item'
 export default {
   // el: '#app',
   data() {

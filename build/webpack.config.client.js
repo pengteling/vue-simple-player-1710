@@ -145,7 +145,7 @@ if (isDev) {
           }        
       ]
     },
-    plugins:[
+    plugins:defaultPlugins.concat([
       new ExtractTextWebpackPlugin('stye-[contentHash:8].css'),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor'
@@ -153,7 +153,7 @@ if (isDev) {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'runtime'
       })
-    ]
+    ])
   })
   // config.entry = {
   //   app: path.resolve(__dirname, 'src/index.js'),

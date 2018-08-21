@@ -1,10 +1,11 @@
 const path = require("path")
 const isDev = process.env.NODE_ENV === "development"
+const createVueLoaderOptions = require("./vue-loader.config")
 const config = {
   entry: path.resolve(__dirname, '../src/index.js'),
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "../dist")
   },
   resolve:{
     extensions:['*','.vue','.js','.jsx'],
@@ -18,10 +19,10 @@ const config = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          extractCSS: isDev ? false : true
-        }
-        // options:
+        // options: {
+        //   extractCSS: isDev ? false : true
+        // }
+        options:createVueLoaderOptions(isDev)
       },
       {
         test: /\.js$/,
